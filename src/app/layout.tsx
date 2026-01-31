@@ -1,6 +1,9 @@
+"use client";
+
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Anton, Playfair_Display } from "next/font/google";
+import { useState } from "react";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -14,11 +17,6 @@ const anton = Anton({
   variable: "--font-anton",
 });
 
-export const metadata: Metadata = {
-  title: "Dargo | Content Creator Portfolio",
-  description:
-    "Personal portfolio of Dargo, a Singapore-based content creator. Explore portfolio, articles, resources, and ways to work together.",
-};
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -33,8 +31,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
     <html lang="en">
+      <head>
+        <title>Dargo | Content Creator Portfolio</title>
+        <meta name="description" content="Personal portfolio of Dargo, a Singapore-based content creator. Explore portfolio, articles, and ways to work together." />
+      </head>
       <body
         className={`${playfair.className} ${anton.variable} antialiased bg-background text-foreground`}
       >
@@ -44,6 +48,8 @@ export default function RootLayout({
               <Link href="/" className="flex items-center gap-2">
                 <span className="text-xl font-bold text-navy">Dargo</span>
               </Link>
+              
+              {/* Desktop Navigation */}
               <nav className="hidden items-center gap-6 text-sm font-semibold md:flex">
                 {navLinks.map((link) => (
                   <Link
@@ -55,10 +61,51 @@ export default function RootLayout({
                   </Link>
                 ))}
               </nav>
-              <button className="rounded-full bg-navy px-5 py-2 text-sm font-semibold text-white transition hover:bg-navy/90 md:inline-flex">
-                Subscribe
-              </button>
+              
+              <div className="flex items-center gap-4">
+                <button className="hidden rounded-full bg-navy px-5 py-2 text-sm font-semibold text-white transition hover:bg-navy/90 md:inline-flex">
+                  Subscribe
+                </button>
+                
+                {/* Mobile Menu Button */}
+                <button
+                  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                  className="md:hidden p-2 text-zinc-700 hover:text-navy"
+                  aria-label="Toggle menu"
+                >
+                  {mobileMenuOpen ? (
+                    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  ) : (
+                    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                  )}
+                </button>
+              </div>
             </div>
+            
+            {/* Mobile Navigation Menu */}
+            {mobileMenuOpen && (
+              <div className="md:hidden border-t border-zinc-200 bg-white">
+                <nav className="mx-auto max-w-7xl px-4 py-4 flex flex-col gap-4">
+                  {navLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="text-sm font-semibold text-zinc-700 transition hover:text-navy py-2"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                  <button className="rounded-full bg-navy px-5 py-3 text-sm font-semibold text-white transition hover:bg-navy/90 w-full">
+                    Subscribe
+                  </button>
+                </nav>
+              </div>
+            )}
           </header>
           <main className="flex-1 bg-background">
             <div className="mx-auto max-w-7xl px-4 py-12 md:px-6 md:py-16">
