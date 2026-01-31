@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+:root {
+  /* Core palette */
+  --color-accent: #f9e358; /* F9E358 */
+  --color-forest: #347560; /* 347560 */
+  --color-warm: #75665a; /* 75665A */
+  --color-deep: #284641; /* 284641 */
+  --color-navy: #042c48; /* 042C48 */
+
+  --background: #ffffff;
+  --foreground: #111827;
+  
+  /* AAA-compliant text colors */
+  --text-primary: #111827; /* zinc-900 equivalent - AAA on white */
+  --text-secondary: #374151; /* zinc-700 equivalent - AAA on white */
+  --text-tertiary: #4b5563; /* zinc-600 equivalent - AA Large on white, use sparingly */
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-accent: var(--color-accent);
+  --color-forest: var(--color-forest);
+  --color-warm: var(--color-warm);
+  --color-deep: var(--color-deep);
+  --color-navy: var(--color-navy);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #020617;
+    --foreground: #e5e7eb;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-anton), system-ui, sans-serif;
+}
+
+.page-title {
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+.section-card {
+  border-radius: 1.5rem;
+  border: 1px solid color-mix(in srgb, var(--color-deep) 10%, transparent);
+  background: color-mix(in srgb, #ffffff 92%, var(--color-navy) 8%);
+}
+
+.section-card-dark {
+  background: radial-gradient(
+      circle at top left,
+      color-mix(in srgb, var(--color-accent) 18%, transparent),
+      transparent 55%
+    ),
+    #020617;
+}
