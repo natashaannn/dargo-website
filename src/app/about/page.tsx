@@ -83,7 +83,7 @@ export default function AboutPage() {
         </div>
         <div className="space-y-4">
           <h2 className="text-3xl font-bold">My Journey</h2>
-          <div className="space-y-4 text-zinc-900">
+          <div className="space-y-4 text-zinc-400">
             <p className="leading-relaxed">
               I&apos;m a content creator, storyteller, and founder of Dargoyaki PTE LTD. What started as documenting my life during NUS Computer Science has evolved into a full-time career creating content that educates and entertains.
             </p>
