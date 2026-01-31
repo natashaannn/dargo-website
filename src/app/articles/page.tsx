@@ -60,8 +60,8 @@ export default function ArticlesPage() {
     <div className="space-y-12">
       {/* Header */}
       <header className="text-center">
-        <h1 className="text-4xl font-bold sm:text-5xl">Articles & Guides</h1>
-        <p className="mx-auto mt-4 max-w-2xl text-lg text-zinc-900">
+        <h1 className="text-4xl font-bold sm:text-5xl text-yellow-500">Articles & Guides</h1>
+        <p className="mx-auto mt-4 max-w-2xl text-lg text-zinc-400">
           Long-form writing on creativity, careers and building a life you love. New articles published weekly.
         </p>
       </header>
@@ -71,7 +71,7 @@ export default function ArticlesPage() {
         {categories.map((category) => (
           <button
             key={category}
-            className="rounded-full border-2 border-zinc-200 bg-white px-5 py-2 text-sm font-semibold transition hover:border-navy hover:bg-navy hover:text-white"
+            className="rounded-full border-2 border-zinc-200 bg-white px-5 py-2 text-sm font-semibold text-zinc-600 transition hover:border-navy hover:bg-navy hover:text-white"
           >
             {category}
           </button>
@@ -109,7 +109,7 @@ export default function ArticlesPage() {
       <section className="rounded-3xl bg-gradient-to-br from-accent/20 via-forest/10 to-warm/10 px-6 py-12 text-center md:px-12 md:py-16">
         <div className="mx-auto max-w-2xl space-y-4">
           <h2 className="text-3xl font-bold">Never Miss an Article</h2>
-          <p className="text-lg text-zinc-900">
+          <p className="text-lg text-zinc-400">
             Get new articles delivered straight to your inbox. Join over 10,000 readers who get weekly insights on creativity, careers and modern life.
           </p>
           <form className="mx-auto mt-6 flex max-w-md flex-col gap-3 sm:flex-row">
